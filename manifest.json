@@ -1,0 +1,10 @@
+{
+    "name": "Talentry",
+    "short_name": "Talentry",
+    "description": "Plataforma que conecta talento con oportunidades profesionales.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6c4cff",
+    "orientation": "portrait-primary"
+}
