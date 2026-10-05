@@ -1,9 +1,9 @@
 const CACHE_NAME = "talentry-v1";
 
 const ARCHIVOS = [
-    "/",
-    "/index.html",
-    "/manifest.json"
+    "./",
+    "./index.html",
+    "./manifest.json"
 ];
 
 self.addEventListener("install", (event) => {
