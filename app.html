@@ -12,6 +12,7 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/pages.css">
 <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -22,15 +23,14 @@
       <span class="logo-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></span>
       <span>Talentry</span>
     </a>
+    <nav class="nav account-nav" id="accountNav">
+      <a href="index.html">Inicio</a><a href="paginas/oportunidades.html">Oportunidades</a><a href="paginas/beneficios.html">Beneficios</a><a href="paginas/talento.html">Talento</a><a href="paginas/empresas.html">Empresas</a>
+    </nav>
     <div class="bar-right">
       <span id="who" class="who"></span>
-      <button id="out" class="btn btn-secondary btn-sm" hidden>
-        <i class="fa-solid fa-right-from-bracket"></i> Salir
-      </button>
-      <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a>
-      <button class="theme-button" id="themeButton" aria-label="Cambiar modo oscuro">
-        <i class="fa-solid fa-moon"></i>
-      </button>
+      <button id="out" class="btn btn-secondary btn-sm" hidden><i class="fa-solid fa-right-from-bracket"></i> Salir</button>
+      <button class="theme-button" id="themeButton" aria-label="Cambiar modo oscuro"><i class="fa-solid fa-moon"></i></button>
+      <button class="menu-button" id="menuButton" aria-label="Abrir menú" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
 </header>
@@ -85,7 +85,7 @@
             <label class="role"><input type="radio" name="role" value="company">
               <span><i class="fa-solid fa-building"></i><strong>Empresa</strong><small>Quiero publicar oportunidades</small></span></label>
           </fieldset>
-          <button class="btn btn-primary full">Crear cuenta <i class="fa-solid fa-arrow-right"></i></button>
+          <button type="submit" class="btn btn-primary full">Crear cuenta <i class="fa-solid fa-arrow-right"></i></button>
         </form>
 
         <p id="err" role="alert"></p>
@@ -149,22 +149,11 @@
     </div>
   </section>
 </main>
+<footer class="footer"><div class="container footer-content"><div class="footer-brand"><a href="index.html" class="logo footer-logo"><span class="logo-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></span><span>Talentry</span></a><p>Donde tu talento encuentra oportunidades.</p></div><div class="footer-links"><h4>Explora</h4><a href="paginas/oportunidades.html">Oportunidades</a><a href="paginas/como-funciona.html">Cómo funciona</a></div><div class="footer-links"><h4>Tu cuenta</h4><a href="paginas/contacto.html">Contacto</a><a href="index.html">Volver al inicio</a></div></div><div class="footer-bottom"><div class="container"><p>© 2026 Talentry · Proyecto académico relacionado con TalentHub.</p></div></div></footer>
 
 <script type="module" src="js/app.js"></script>
+<script src="js/pages.js"></script>
 <script>
-  // Modo oscuro: mismo ajuste que el resto del sitio
-  const tb = document.getElementById("themeButton"), ti = tb.querySelector("i");
-  const paint = () => {
-    const d = document.body.classList.contains("dark-mode");
-    ti.classList.toggle("fa-sun", d); ti.classList.toggle("fa-moon", !d);
-  };
-  if (localStorage.getItem("talentry-theme") === "dark") document.body.classList.add("dark-mode");
-  paint();
-  tb.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("talentry-theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
-    paint();
-  });
   // Mostrar u ocultar contraseña
   document.querySelectorAll(".eye").forEach((b) => b.addEventListener("click", () => {
     const i = b.parentElement.querySelector("input"), show = i.type === "password";

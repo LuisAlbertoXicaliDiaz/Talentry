@@ -27,6 +27,12 @@ document.querySelectorAll(".tabs button").forEach((b) => (b.onclick = () => {
   say();
 }));
 
+// Permite abrir directamente la pestaña de registro desde los CTA de la web.
+const initialTab = new URLSearchParams(window.location.search).get("tab");
+if (initialTab === "registro" || initialTab === "reg") {
+  document.querySelector('.tabs button[data-t="reg"]')?.click();
+}
+
 $("#fLogin").onsubmit = async (e) => {
   e.preventDefault(); say();
   const f = new FormData(e.target);

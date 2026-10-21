@@ -1,4 +1,4 @@
-const CACHE_NAME = "talentry-v2";
+const CACHE_NAME = "talentry-v3";
 
 const ARCHIVOS = [
     "./",
@@ -7,9 +7,18 @@ const ARCHIVOS = [
     "./manifest.json",
     "./css/style.css",
     "./css/app.css",
+    "./css/pages.css",
     "./js/script.js",
+    "./js/pages.js",
     "./js/app.js",
     "./js/firebase-config.js",
+    "./paginas/como-funciona.html",
+    "./paginas/oportunidades.html",
+    "./paginas/beneficios.html",
+    "./paginas/talento.html",
+    "./paginas/empresas.html",
+    "./paginas/innovacion.html",
+    "./paginas/contacto.html",
     "./icon-192.png",
     "./icon-512.png"
 ];
@@ -21,7 +30,7 @@ self.addEventListener("install", (event) => {
     self.skipWaiting();
 });
 
-// Borra los cachés de versiones anteriores (talentry-v1, etc.)
+// Borra los cachés de versiones anteriores al activar la nueva versión.
 self.addEventListener("activate", (event) => {
     event.waitUntil(
         caches.keys()
