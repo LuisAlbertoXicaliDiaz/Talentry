@@ -4,68 +4,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Talentry | Mi cuenta</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/app.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
-<header class="bar">
-  <a href="index.html" class="brand">Talentry</a>
-  <div><span id="who"></span> <button id="out" class="ghost" hidden>Salir</button></div>
+
+<header class="header">
+  <div class="container nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><i class="fa-solid fa-arrow-up-right-dots"></i></span>
+      <span>Talentry</span>
+    </a>
+    <div class="bar-right">
+      <span id="who" class="who"></span>
+      <button id="out" class="btn btn-secondary btn-sm" hidden>
+        <i class="fa-solid fa-right-from-bracket"></i> Salir
+      </button>
+      <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Volver al inicio</a>
+      <button class="theme-button" id="themeButton" aria-label="Cambiar modo oscuro">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </div>
 </header>
 
 <main>
-  <section id="auth" class="box narrow">
-    <h1>Entra a Talentry</h1>
-    <div class="tabs">
-      <button type="button" data-t="login" class="on">Iniciar sesión</button>
-      <button type="button" data-t="reg">Crear cuenta</button>
+
+  <!-- ================= INICIAR SESIÓN / REGISTRO ================= -->
+  <section id="auth" class="auth-hero">
+    <div class="container auth-grid">
+
+      <div class="auth-card">
+        <span class="badge"><i class="fa-solid fa-rocket"></i> Bienvenido a Talentry</span>
+        <h1>Tu talento, <span>tu próxima oportunidad.</span></h1>
+        <p class="auth-sub">Entra a tu cuenta o crea una en menos de un minuto.</p>
+
+        <div class="tabs" role="tablist">
+          <button type="button" data-t="login" class="on" role="tab">Iniciar sesión</button>
+          <button type="button" data-t="reg" role="tab">Crear cuenta</button>
+        </div>
+
+        <form id="fLogin">
+          <label class="field"><span>Correo</span>
+            <div class="input"><i class="fa-solid fa-envelope"></i>
+              <input name="email" type="email" required autocomplete="email" placeholder="tu@correo.com"></div>
+          </label>
+          <label class="field"><span>Contraseña</span>
+            <div class="input"><i class="fa-solid fa-lock"></i>
+              <input name="password" type="password" required autocomplete="current-password" placeholder="Tu contraseña">
+              <button type="button" class="eye" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button></div>
+          </label>
+          <button class="btn btn-primary full">Iniciar sesión <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+
+        <form id="fReg" hidden>
+          <label class="field"><span>Nombre o empresa</span>
+            <div class="input"><i class="fa-solid fa-user"></i>
+              <input name="name" required maxlength="80" placeholder="Cómo quieres aparecer"></div>
+          </label>
+          <label class="field"><span>Correo</span>
+            <div class="input"><i class="fa-solid fa-envelope"></i>
+              <input name="email" type="email" required autocomplete="email" placeholder="tu@correo.com"></div>
+          </label>
+          <label class="field"><span>Contraseña (mínimo 6 caracteres)</span>
+            <div class="input"><i class="fa-solid fa-lock"></i>
+              <input name="password" type="password" minlength="6" required autocomplete="new-password" placeholder="Crea una contraseña">
+              <button type="button" class="eye" aria-label="Mostrar contraseña"><i class="fa-solid fa-eye"></i></button></div>
+          </label>
+          <fieldset class="roles">
+            <legend>Quiero entrar como</legend>
+            <label class="role"><input type="radio" name="role" value="student" checked>
+              <span><i class="fa-solid fa-user-graduate"></i><strong>Estudiante</strong><small>Busco prácticas o mi primer empleo</small></span></label>
+            <label class="role"><input type="radio" name="role" value="company">
+              <span><i class="fa-solid fa-building"></i><strong>Empresa</strong><small>Quiero publicar oportunidades</small></span></label>
+          </fieldset>
+          <button class="btn btn-primary full">Crear cuenta <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+
+        <p id="err" role="alert"></p>
+      </div>
+
+      <aside class="showcase" aria-hidden="true">
+        <div class="floating-pill"><i class="fa-solid fa-briefcase"></i><div><strong>+120</strong><small>Oportunidades</small></div></div>
+        <div class="mini-profile">
+          <div class="mini-top">
+            <div class="mini-avatar"><i class="fa-solid fa-user"></i></div>
+            <div><strong>Tu perfil profesional</strong><span>Talentry</span></div>
+          </div>
+          <div class="mini-skill"><div><span>Desarrollo web</span><strong>90%</strong></div><div class="bar"><span style="width:90%"></span></div></div>
+          <div class="mini-skill"><div><span>Trabajo en equipo</span><strong>85%</strong></div><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="mini-skill"><div><span>Comunicación</span><strong>80%</strong></div><div class="bar"><span style="width:80%"></span></div></div>
+          <div class="mini-match"><i class="fa-solid fa-check"></i> Perfil listo para conectar</div>
+        </div>
+        <ul class="perks">
+          <li><i class="fa-solid fa-circle-check"></i> Crea tu perfil y muestra tus proyectos</li>
+          <li><i class="fa-solid fa-circle-check"></i> Postúlate con un clic</li>
+          <li><i class="fa-solid fa-circle-check"></i> Las empresas te encuentran</li>
+        </ul>
+      </aside>
+
     </div>
-    <form id="fLogin">
-      <label>Correo <input name="email" type="email" required autocomplete="email"></label>
-      <label>Contraseña <input name="password" type="password" required autocomplete="current-password"></label>
-      <button class="primary">Iniciar sesión</button>
-    </form>
-    <form id="fReg" hidden>
-      <label>Nombre o empresa <input name="name" required maxlength="80"></label>
-      <label>Correo <input name="email" type="email" required autocomplete="email"></label>
-      <label>Contraseña (mínimo 6) <input name="password" type="password" minlength="6" required autocomplete="new-password"></label>
-      <label>Soy
-        <select name="role"><option value="student">Estudiante o joven profesional</option><option value="company">Empresa</option></select>
-      </label>
-      <button class="primary">Crear cuenta</button>
-    </form>
-    <p id="err" role="alert"></p>
   </section>
 
-  <section id="app" hidden>
-    <div id="companyPanel" class="box" hidden>
-      <h2>Publicar oportunidad</h2>
-      <form id="fOpp" class="grid">
-        <label>Título <input name="title" required maxlength="120"></label>
-        <label>Ubicación <input name="location" required placeholder="Puebla, México o Remoto"></label>
-        <label>Tipo <select name="type"><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select></label>
-        <label>Etiquetas (separadas por coma) <input name="tags" placeholder="HTML, CSS, JavaScript"></label>
-        <label class="full">Descripción <textarea name="description" rows="3" required maxlength="2000"></textarea></label>
-        <button class="primary">Publicar</button>
-      </form>
-      <h2>Postulantes a mis oportunidades</h2>
-      <div id="applicants"></div>
-    </div>
+  <!-- ================= PANEL DE LA CUENTA ================= -->
+  <section id="app" class="dash" hidden>
+    <div class="container">
 
-    <div id="studentPanel" class="box" hidden>
-      <h2>Mis postulaciones</h2>
-      <div id="mine"></div>
-    </div>
-
-    <div class="box">
-      <h2>Oportunidades</h2>
-      <div class="filters">
-        <input id="q" type="search" placeholder="Buscar por título, empresa o etiqueta">
-        <select id="ft"><option value="">Todos los tipos</option><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select>
+      <div id="companyPanel" class="box" hidden>
+        <h2><i class="fa-solid fa-bullhorn"></i> Publicar oportunidad</h2>
+        <form id="fOpp" class="grid">
+          <label class="field"><span>Título</span><div class="input"><input name="title" required maxlength="120"></div></label>
+          <label class="field"><span>Ubicación</span><div class="input"><input name="location" required placeholder="Puebla, México o Remoto"></div></label>
+          <label class="field"><span>Tipo</span><div class="input"><select name="type"><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select></div></label>
+          <label class="field"><span>Etiquetas (separadas por coma)</span><div class="input"><input name="tags" placeholder="HTML, CSS, JavaScript"></div></label>
+          <label class="field wide"><span>Descripción</span><div class="input"><textarea name="description" rows="3" required maxlength="2000"></textarea></div></label>
+          <div class="wide"><button class="btn btn-primary">Publicar <i class="fa-solid fa-arrow-right"></i></button></div>
+        </form>
+        <h2><i class="fa-solid fa-user-group"></i> Postulantes a mis oportunidades</h2>
+        <div id="applicants"></div>
       </div>
-      <div id="list"></div>
+
+      <div id="studentPanel" class="box" hidden>
+        <h2><i class="fa-solid fa-paper-plane"></i> Mis postulaciones</h2>
+        <div id="mine"></div>
+      </div>
+
+      <div class="box">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> Oportunidades</h2>
+        <div class="filters">
+          <div class="input grow"><i class="fa-solid fa-magnifying-glass"></i>
+            <input id="q" type="search" placeholder="Buscar por título, empresa o etiqueta"></div>
+          <div class="input"><select id="ft"><option value="">Todos los tipos</option><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select></div>
+        </div>
+        <div id="list"></div>
+      </div>
+
     </div>
   </section>
 </main>
+
 <script type="module" src="js/app.js"></script>
+<script>
+  // Modo oscuro: mismo ajuste que el resto del sitio
+  const tb = document.getElementById("themeButton"), ti = tb.querySelector("i");
+  const paint = () => {
+    const d = document.body.classList.contains("dark-mode");
+    ti.classList.toggle("fa-sun", d); ti.classList.toggle("fa-moon", !d);
+  };
+  if (localStorage.getItem("talentry-theme") === "dark") document.body.classList.add("dark-mode");
+  paint();
+  tb.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("talentry-theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    paint();
+  });
+  // Mostrar u ocultar contraseña
+  document.querySelectorAll(".eye").forEach((b) => b.addEventListener("click", () => {
+    const i = b.parentElement.querySelector("input"), show = i.type === "password";
+    i.type = show ? "text" : "password";
+    b.querySelector("i").className = show ? "fa-solid fa-eye-slash" : "fa-solid fa-eye";
+  }));
+</script>
 </body>
 </html>
