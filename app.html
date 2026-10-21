@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talentry | Mi cuenta</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="bar">
+  <a href="index.html" class="brand">Talentry</a>
+  <div><span id="who"></span> <button id="out" class="ghost" hidden>Salir</button></div>
+</header>
+
+<main>
+  <section id="auth" class="box narrow">
+    <h1>Entra a Talentry</h1>
+    <div class="tabs">
+      <button type="button" data-t="login" class="on">Iniciar sesión</button>
+      <button type="button" data-t="reg">Crear cuenta</button>
+    </div>
+    <form id="fLogin">
+      <label>Correo <input name="email" type="email" required autocomplete="email"></label>
+      <label>Contraseña <input name="password" type="password" required autocomplete="current-password"></label>
+      <button class="primary">Iniciar sesión</button>
+    </form>
+    <form id="fReg" hidden>
+      <label>Nombre o empresa <input name="name" required maxlength="80"></label>
+      <label>Correo <input name="email" type="email" required autocomplete="email"></label>
+      <label>Contraseña (mínimo 6) <input name="password" type="password" minlength="6" required autocomplete="new-password"></label>
+      <label>Soy
+        <select name="role"><option value="student">Estudiante o joven profesional</option><option value="company">Empresa</option></select>
+      </label>
+      <button class="primary">Crear cuenta</button>
+    </form>
+    <p id="err" role="alert"></p>
+  </section>
+
+  <section id="app" hidden>
+    <div id="companyPanel" class="box" hidden>
+      <h2>Publicar oportunidad</h2>
+      <form id="fOpp" class="grid">
+        <label>Título <input name="title" required maxlength="120"></label>
+        <label>Ubicación <input name="location" required placeholder="Puebla, México o Remoto"></label>
+        <label>Tipo <select name="type"><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select></label>
+        <label>Etiquetas (separadas por coma) <input name="tags" placeholder="HTML, CSS, JavaScript"></label>
+        <label class="full">Descripción <textarea name="description" rows="3" required maxlength="2000"></textarea></label>
+        <button class="primary">Publicar</button>
+      </form>
+      <h2>Postulantes a mis oportunidades</h2>
+      <div id="applicants"></div>
+    </div>
+
+    <div id="studentPanel" class="box" hidden>
+      <h2>Mis postulaciones</h2>
+      <div id="mine"></div>
+    </div>
+
+    <div class="box">
+      <h2>Oportunidades</h2>
+      <div class="filters">
+        <input id="q" type="search" placeholder="Buscar por título, empresa o etiqueta">
+        <select id="ft"><option value="">Todos los tipos</option><option>Prácticas</option><option>Primer empleo</option><option>Proyecto</option></select>
+      </div>
+      <div id="list"></div>
+    </div>
+  </section>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
